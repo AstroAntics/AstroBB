@@ -62,6 +62,7 @@ $lang = array_merge($lang, array(
 
 	'ACCOUNT_ALREADY_ACTIVATED'		=> 'Your account has already been activated.',
 	'ACCOUNT_DEACTIVATED'			=> 'Your account has been manually deactivated and is only able to be reactivated by an administrator.',
+	'ACCOUNT_DENIED'				=> 'A moderator has denied your account.',
 	'ACP'							=> 'Administration Control Panel',
 	'ACP_SHORT'						=> 'ACP',
 	'ACTIVE'						=> 'active',
@@ -80,7 +81,7 @@ $lang = array_merge($lang, array(
 	'ALL_FORUMS'					=> 'All forums',
 	'ALL_MESSAGES'					=> 'All messages',
 	'ALL_POSTS'						=> 'All posts',
-	'ALL_TIMES'						=> 'All times are <span title="%2$s">%1$s</span>',
+	'ALL_TIMES'						=> 'All times are in <span title="%2$s">%1$s</span>',
 	'ALL_TOPICS'					=> 'All Topics',
 	'ALT_TEXT'						=> 'Alternative text',
 	'AND'							=> 'And',
@@ -121,14 +122,16 @@ $lang = array_merge($lang, array(
 
 	'BACK_TO_TOP'			=> 'Top',
 	'BACK_TO_PREV'			=> 'Back to previous page',
-	'BAN_TRIGGERED_BY_EMAIL'=> 'A ban has been issued on your email address.',
-	'BAN_TRIGGERED_BY_IP'	=> 'A ban has been issued on your IP address.',
-	'BAN_TRIGGERED_BY_USER'	=> 'A ban has been issued on your username.',
+	'BAN_TRIGGERED_BY_EMAIL'=> 'This ban affects your email address.',
+	'BAN_TRIGGERED_BY_IP'	=> 'This ban affects your IP address.',
+	'BAN_TRIGGERED_BY_USER'	=> 'This ban affects your username.',
 	'BBCODE_GUIDE'			=> 'BBCode guide',
 	'BCC'					=> 'BCC',
 	'BIRTHDAYS'				=> 'Birthdays',
 	'BOARD_BAN_PERM'		=> 'You have been <strong>permanently</strong> banned from this board.<br /><br />Please contact the %2$sBoard Administrator%3$s for more information.',
+	'BOARD_BAN_PERM_REASON' => 'You have been <strong>permanently</strong> banned for the following reason: <br> <strong>%s</strong>',
 	'BOARD_BAN_REASON'		=> 'Reason given for ban: <strong>%s</strong>',
+	'BOARD_BAN_TEMP'		=> 'You have been banned until <strong>%1$s</strong> for the following reason: <br> <strong>%s</strong>'
 	'BOARD_BAN_TIME'		=> 'You have been banned from this board until <strong>%1$s</strong>.<br /><br />Please contact the %2$sBoard Administrator%3$s for more information.',
 	'BOARD_DISABLE'			=> 'Sorry but this board is currently unavailable.',
 	'BOARD_DISABLED'		=> 'This board is currently disabled.',
@@ -152,6 +155,7 @@ $lang = array_merge($lang, array(
 	'BUTTON_QUOTE'			=> 'Quote',
 	'BUTTON_REPORT'         => 'Report',
 	'BUTTON_TOPIC_LOCKED'	=> 'Locked',
+	'BUTTON_THREADBANNED'	=> 'Thread Banned',
 	'BUTTON_WARN'           => 'Warn',
 	'BYTES'					=> 'Bytes',
 	'BYTES_SHORT'			=> 'B',
@@ -215,7 +219,7 @@ $lang = array_merge($lang, array(
 		2	=> 'Downloaded %d times',
 	),
 
-	'EDIT_POST'							=> 'Edit post',
+	'EDIT_POST'							=> 'Edit Post',
 	'ELLIPSIS'							=>	'…',
 	'EMAIL'								=> 'Email', // Short form for EMAIL_ADDRESS
 	'EMAIL_ADDRESS'						=> 'Email address',
@@ -234,7 +238,7 @@ $lang = array_merge($lang, array(
 	'ERR_UNWATCHING'					=> 'An error occurred while trying to unsubscribe.',
 	'ERR_WATCHING'						=> 'An error occurred while trying to subscribe.',
 	'ERR_WRONG_PATH_TO_PHPBB'			=> 'The phpBB path specified appears to be invalid.',
-	'ERROR'									=> 'Error',
+	'ERROR'								=> 'Error',
 	'EXPAND_VIEW'						=> 'Expand view',
 	'EXTENSION'							=> 'Extension',
 	'EXTENSION_DISABLED'				=> 'The extension <strong>%s</strong> is not enabled.',
@@ -470,35 +474,40 @@ $lang = array_merge($lang, array(
 	// A, B, C and 2 others replied...
 	// A, B, C and others replied...
 	'NOTIFICATION_BOOKMARK'				=> array(
-		1	=> '<strong>Reply</strong> from %1$s in bookmarked topic:',
+		1 	=> '%1$s replied in bookmarked topic:',
+	//	1 	=> '<strong>Reply</strong> from %1$s in bookmarked topic:',
 	),
 	'NOTIFICATION_FORUM'				=> '<em>Forum:</em> %1$s',
 	'NOTIFICATION_GROUP_REQUEST'		=> '<strong>Group request</strong> from %1$s to join the group %2$s.',
 	'NOTIFICATION_GROUP_REQUEST_APPROVED'	=> '<strong>Group request approved</strong> to join the group %1$s.',
 	'NOTIFICATION_MENTION'				=> array(
-		1	=> '<strong>Mentioned</strong> by %1$s in:',
+		1 	=> '<strong>%1$s</strong> mentioned you in:',
+	//	1	=> '<strong>Mentioned</strong> by %1$s in:',
 	),
 	'NOTIFICATION_METHOD_INVALID'		=> 'The method "%s" does not refer to a valid notification method.',
-	'NOTIFICATION_PM'					=> '<strong>Private Message</strong> from %1$s:',
+	'NOTIFICATION_PM'					=> '<strong>%1$s</strong> sent you a Private Message.',
+	'NOTIFICATION_PM_BANNED'			=> '<strong>PM banned</strong> by %1$s',
 	'NOTIFICATION_POST'					=> array(
-		1	=> '<strong>Reply</strong> from %1$s in topic:',
+		1 	=> '<strong>%1$s</strong> replied to the topic:',
+	//	1	=> '<strong>Reply</strong> from %1$s in topic:',
 	),
 	'NOTIFICATION_POST_APPROVED'		=> '<strong>Post approved</strong>:',
 	'NOTIFICATION_POST_DISAPPROVED'		=> '<strong>Post disapproved</strong>:',
 	'NOTIFICATION_POST_IN_QUEUE'		=> '<strong>Post approval</strong> request by %1$s:',
 	'NOTIFICATION_QUOTE'				=> array(
-		1	=> '<strong>Quoted</strong> by %1$s in:',
+		1 => '<strong>%1$ quoted you in:',
+		// 1	=> '<strong>Quoted</strong> by %1$s in:',
 	),
 	'NOTIFICATION_REFERENCE'			=> '"%1$s"',
 	'NOTIFICATION_REASON'				=> '<em>Reason:</em> %1$s.',
-	'NOTIFICATION_REPORT_PM'			=> '<strong>Private Message reported</strong> by %1$s:',
-	'NOTIFICATION_REPORT_PM_CLOSED'		=> '<strong>Private Message report closed</strong> by %1$s:',
+	'NOTIFICATION_REPORT_PM'			=> '<strong>%1$s</strong> reported a Private Message:',
+	'NOTIFICATION_REPORT_PM_CLOSED'		=> '<strong>%1$s</strong> closed a Private Message report:',
 	'NOTIFICATION_REPORT_POST'			=> '<strong>Post reported</strong> by %1$s:',
-	'NOTIFICATION_REPORT_CLOSED'		=> '<strong>Report closed</strong> by %1$s for:',
-	'NOTIFICATION_TOPIC'				=> '<strong>New topic</strong> by %1$s:',
+	'NOTIFICATION_REPORT_CLOSED'		=> '<strong>%1$s</strong> closed a report for:',
+	'NOTIFICATION_TOPIC'				=> '<strong>%1$s</strong> has created a new topic:',
 	'NOTIFICATION_TOPIC_APPROVED'		=> '<strong>Topic approved</strong>:',
 	'NOTIFICATION_TOPIC_DISAPPROVED'	=> '<strong>Topic disapproved</strong>:',
-	'NOTIFICATION_TOPIC_IN_QUEUE'		=> '<strong>Topic approval</strong> request by %1$s:',
+	'NOTIFICATION_TOPIC_IN_QUEUE'		=> '<strong>%1$s</strong> is requesting topic approval:',
 	'NOTIFICATION_TYPE_NOT_EXIST'		=> 'The notification type "%s" is missing from the file system.',
 	'NOTIFICATION_ADMIN_ACTIVATE_USER'	=> '<strong>Activation required</strong> for deactivated or newly registered user: “%1$s”',
 	// Used in conjunction with NOTIFICATION_BOOKMARK and NOTIFICATION_POST.
@@ -509,6 +518,8 @@ $lang = array_merge($lang, array(
 	'NOTIFY_ADMIN'				=> 'Please notify the board administrator or webmaster.',
 	'NOTIFY_ADMIN_EMAIL'		=> 'Please notify the board administrator or webmaster: <a href="mailto:%1$s">%1$s</a>',
 	'NO_ACCESS_ATTACHMENT'		=> 'You are not allowed to access this file.',
+	'NO_ACCESS_FORUM_BANNED'	=> 'You cannot view this thread as you have been banned from accessing this subforum.',
+	'NO_ACCESS_PM_BANNED'		=> 'You have been banned from using the Personal Messaging system.',
 	'NO_ACTION'					=> 'No action specified.',
 	'NO_ADMINISTRATORS'			=> 'There are no administrators.',
 	'NO_AUTH_ADMIN'				=> 'Access to the Administration Control Panel is not allowed as you do not have administrative permissions.',
@@ -561,6 +572,12 @@ $lang = array_merge($lang, array(
 		1			=> '1 post in queue',		// 1
 		2			=> '%d posts in queue',		// 2+
 	),
+	
+	'NUM_PMS_RECEIVED' => array(
+		0 => 'No Private Messages received',
+		1 => '1 Private Message received',
+		2 => '%d Private Messages received',
+	),
 
 	'OCCUPATION'				=> 'Occupation',
 	'OFFLINE'					=> 'Offline',
@@ -568,13 +585,13 @@ $lang = array_merge($lang, array(
 	'ONLINE_BUDDIES'			=> 'Online friends',
 	// "... :: x registered and y hidden"
 	'ONLINE_USERS_TOTAL'		=> array(
-		1	=> 'In total there is <strong>%1$d</strong> user online :: %2$s and %3$s',
-		2	=> 'In total there are <strong>%1$d</strong> users online :: %2$s and %3$s',
+		1	=> 'There is currently <strong>%1$d</strong> user online - %2$s and %3$s',
+		2	=> 'There are currently <strong>%1$d</strong> users online - %2$s and %3$s',
 	),
 	// "... :: x registered, y hidden and z guests"
 	'ONLINE_USERS_TOTAL_GUESTS'	=> array(
-		1	=> 'In total there is <strong>%1$d</strong> user online :: %2$s, %3$s and %4$s',
-		2	=> 'In total there are <strong>%1$d</strong> users online :: %2$s, %3$s and %4$s',
+		1	=> 'There is currently <strong>%1$d</strong> user online - %2$s, %3$s and %4$s',
+		2	=> 'There are currently <strong>%1$d</strong> users online - %2$s, %3$s and %4$s',
 	),
 	'OPTIONS'					=> 'Options',
 
@@ -607,25 +624,26 @@ $lang = array_merge($lang, array(
 	'POST_DAY'				=> '%.2f posts per day',
 	'POST_DELETED_ACTION'	=> 'Deleted post:',
 	'POST_DELETED'			=> 'This post has been deleted.',
-	'POST_DELETED_BY'		=> '<strong>%2$s</strong> deleted the post by <strong>%1$s</strong> on %3$s.',
-	'POST_DELETED_BY_REASON'=> '<strong>%2$s</strong> deleted the post by <strong>%1$s</strong> on %3$s for the following reason: %4$s',
+	'POST_DELETED_BY'		=> '<strong>%2$s</strong> deleted <strong>%1$s\'s</strong> post on %3$s.',
+	'POST_DELETED_BY_REASON'=> '<strong>%2$s</strong> deleted <strong>%1$s\'s</strong> post on %3$s for reason: %4$s',
 	'POST_DETAILS'			=> 'Post details',
 	'POST_NEW_TOPIC'		=> 'Post new topic',
 	'POST_PCT'				=> '%.2f%% of all posts',
 	'POST_PCT_ACTIVE'		=> '%.2f%% of user’s posts',
 	'POST_PCT_ACTIVE_OWN'	=> '%.2f%% of your posts',
-	'POST_REPLY'			=> 'Post a reply',
+	'POST_REPLY'			=> 'New Reply',
 	'POST_REPORTED'			=> 'Click to view report',
 	'POST_SUBJECT'			=> 'Post subject',
 	'POST_TIME'				=> 'Post time',
-	'POST_TOPIC'			=> 'Post a new topic',
-	'POST_UNAPPROVED_ACTION'	=> 'Post awaiting approval:',
+	'POST_TOPIC'			=> 'New Topic',
+	'POST_UNAPPROVED_ACTION'=> 'Post awaiting approval:',
 	'POST_UNAPPROVED'		=> 'This post has not been approved.',
-	'POST_UNAPPROVED_EXPLAIN'	=> 'This post is not visible to other users until it has been approved by a moderator.',
+	'POST_UNAPPROVED_EXPLAIN' => 'This post will not be visible to other users until it has been approved by a moderator.',
 	'POWERED_BY'			=> 'Powered by %s',
 
 	'QUOTE'					=> 'Quote',
-
+	
+	'PIN_HEADER'			=> 'Pin Header Post', // CUSTOM: Pinned header post
 	'PREVIEW'				=> 'Preview',
 	'PREVIOUS'				=> 'Previous',		// Used in pagination
 	'PREVIOUS_STEP'			=> 'Previous',
@@ -666,7 +684,7 @@ $lang = array_merge($lang, array(
 	'REPLYING_GLOBAL_ANNOUNCE'	=> 'Replying to global announcement',
 	'REPLYING_MESSAGE'			=> 'Replying to message in %s',
 	'REPORT_BY'					=> 'Report by',
-	'REPORT_POST'				=> 'Report this post',
+	'REPORT_POST'				=> 'Report Post',
 	'REPORTING_POST'			=> 'Reporting post',
 	'RESEND_ACTIVATION'			=> 'Resend activation email',
 	'RESET'						=> 'Reset',
@@ -776,6 +794,10 @@ $lang = array_merge($lang, array(
 	'TIB'				=> 'TiB',
 	'TIME'				=> 'Time',
 	'TIMEOUT_PROCESSING_REQ'			=> 'Request timed out.',
+	
+	'THREADBAN_USER'				=> 'Threadban User',
+	'LIFT_THREADBAN'				=> 'Lift %s\'s Threadban',
+	'THREADBAN_LOG'					=> 'View Threadban Log'
 
 	'TOO_LARGE'						=> 'The value you entered is too large.',
 	'TOO_LARGE_MAX_RECIPIENTS'		=> 'The value of <strong>Maximum number of allowed recipients per private message</strong> setting you entered is too large.',
@@ -807,16 +829,17 @@ $lang = array_merge($lang, array(
 	'TOO_SMALL'						=> 'The value you entered is too small.',
 	'TOO_SMALL_MAX_RECIPIENTS'		=> 'The value of <strong>Maximum number of allowed recipients per private message</strong> setting you entered is too small.',
 
-	'TOPIC'				=> 'Topic',
-	'TOPICS'			=> 'Topics',
-	'TOPICS_UNAPPROVED'	=> 'At least one topic in this forum has not been approved.',
-	'TOPIC_ICON'		=> 'Topic icon',
-	'TOPIC_LOCKED'		=> 'This topic is locked, you cannot edit posts or make further replies.',
-	'TOPIC_LOCKED_SHORT'=> 'Topic locked',
-	'TOPIC_MOVED'		=> 'Moved topic',
-	'TOPIC_REVIEW'		=> 'Topic review',
-	'TOPIC_TITLE'		=> 'Topic title',
-	'TOPIC_UNAPPROVED'	=> 'This topic has not been approved.',
+	'TOPIC'					=> 'Topic',
+	'TOPICS'				=> 'Topics',
+	'TOPICS_UNAPPROVED'		=> 'At least one topic in this forum has not been approved.',
+	'TOPIC_ICON'			=> 'Topic icon',
+	'TOPIC_LOCKED'			=> 'This topic is locked, you cannot edit posts or make further replies.',
+	'THREADBAN_DESC'		=> 'You have been banned from replying to this thread.',
+	'TOPIC_LOCKED_SHORT'	=> 'Topic Locked',
+	'TOPIC_MOVED'			=> 'Moved Topic',
+	'TOPIC_REVIEW'			=> 'Topic review',
+	'TOPIC_TITLE'			=> 'Topic title',
+	'TOPIC_UNAPPROVED'		=> 'This topic has not been approved.',
 	'TOPIC_UNAPPROVED_FORUM'	=> array(
 		1	=> 'Topic awaiting approval',
 		2	=> 'Topics awaiting approval',
@@ -832,18 +855,18 @@ $lang = array_merge($lang, array(
 		2	=> '%d private messages in total',
 	),
 	'TOPIC_POLL'		=> 'This topic has a poll.',
-	'TOTAL_POSTS'		=> 'Total posts',
+	'TOTAL_POSTS'		=> '%d total posts',
 	'TOTAL_POSTS_COUNT'	=> array(
-		2	=> 'Total posts <strong>%d</strong>',
+		2	=> '<strong>%d</strong>total posts',
 	),
 	'TOPIC_REPORTED'	=> 'This topic has been reported',
 	'TOTAL_TOPICS'		=> array(
-		2	=> 'Total topics <strong>%d</strong>',
+		2	=> '<strong>%d</strong> total topics',
 	),
 	'TOTAL_USERS'		=> array(
-		2	=> 'Total members <strong>%d</strong>',
+		2	=> '<strong>%d</strong> total members',
 	),
-	'TRACKED_PHP_ERROR'	=> 'Tracked PHP errors: %s',
+	'TRACKED_PHP_ERROR'	=> '%s tracked PHP errors',
 	'TWITTER'			=> 'Twitter',
 
 	'UNABLE_GET_IMAGE_SIZE'	=> 'It was not possible to determine the dimensions of the image. Please verify that the URL you entered is correct.',
@@ -853,13 +876,13 @@ $lang = array_merge($lang, array(
 	'UNREAD_MESSAGES'		=> 'Unread messages',
 	'UNREAD_POST'			=> 'Unread post',
 	'UNREAD_POSTS'			=> 'Unread posts',
-	'UNWATCH_FORUM_CONFIRM'		=> 'Are you sure you wish to unsubscribe from this forum?',
-	'UNWATCH_FORUM_DETAILED'	=> 'Are you sure you wish to unsubscribe from the forum “%s”?',
-	'UNWATCH_TOPIC_CONFIRM'		=> 'Are you sure you wish to unsubscribe from this topic?',
-	'UNWATCH_TOPIC_DETAILED'	=> 'Are you sure you wish to unsubscribe from the topic “%s”?',
-	'UNWATCHED_FORUMS'			=> 'You are no longer subscribed to the selected forums.',
-	'UNWATCHED_TOPICS'			=> 'You are no longer subscribed to the selected topics.',
-	'UNWATCHED_FORUMS_TOPICS'	=> 'You are no longer subscribed to the selected entries.',
+	'UNWATCH_FORUM_CONFIRM'	=> 'Are you sure you wish to unsubscribe from this forum?',
+	'UNWATCH_FORUM_DETAILED'=> 'Are you sure you wish to unsubscribe from the forum “%s”?',
+	'UNWATCH_TOPIC_CONFIRM'	=> 'Are you sure you wish to unsubscribe from this topic?',
+	'UNWATCH_TOPIC_DETAILED'=> 'Are you sure you wish to unsubscribe from the topic “%s”?',
+	'UNWATCHED_FORUMS'		=> 'You have been unsubscribed to the selected forums.',
+	'UNWATCHED_TOPICS'		=> 'You have been unsubscribed to the selected topics.',
+	'UNWATCHED_FORUMS_TOPICS'=> 'You have been unsubscribed to the selected entries.',
 	'UPDATE'				=> 'Update',
 	'UPLOAD_IN_PROGRESS'	=> 'The upload is currently in progress.',
 	'URL_REDIRECT'			=> 'If your browser does not support meta redirection %splease click HERE to be redirected%s.',
@@ -875,7 +898,7 @@ $lang = array_merge($lang, array(
 	'USERS'					=> 'Users',
 	'USE_PERMISSIONS'		=> 'Test out user’s permissions',
 
-	'USER_NEW_PERMISSION_DISALLOWED'	=> 'We are sorry, but you are not authorised to use this feature. You may have just registered here and may need to participate more in discussions to be able to use this feature.',
+	'USER_NEW_PERMISSION_DISALLOWED'	=> 'Sorry, your account is too new to use this feature. Please participate more in discussions to be able to use this feature.',
 
 	'VARIANT_DATE_SEPARATOR'	=> ' / ',	// Used in date format dropdown, eg: "Today, 13:37 / 01 Jan 2007, 13:37" ... to join a relative date with calendar date
 	'VIEWED'					=> 'Viewed',
@@ -911,6 +934,7 @@ $lang = array_merge($lang, array(
 	'VIEW_TOPIC_MOVED'			=> 'Moved: ',
 	'VIEW_TOPIC_POLL'			=> 'Poll: ',
 	'VIEW_TOPIC_STICKY'			=> 'Sticky: ',
+	'VIEW_TOPIC_THREAD_BANNED'	=> 'Thread Banned: '
 	'VISIT_WEBSITE'				=> 'Visit website',
 
 	'WARNINGS'			=> 'Warnings',
@@ -939,7 +963,7 @@ $lang = array_merge($lang, array(
 	'YEAR'				=> 'Year',
 	'YEAR_MONTH_DAY'	=> '(YYYY-MM-DD)',
 	'YES'				=> 'Yes',
-	'YOU_LAST_VISIT'	=> 'Last visit was: %s',
+	'YOU_LAST_VISIT'	=> 'Your last visit was: %s',
 
 	'datetime'			=> array(
 		'TODAY'		=> 'Today',
