@@ -913,9 +913,9 @@ function user_active_flip($mode, $user_id_ary, $reason = INACTIVE_MANUAL)
 }
 
 /**
-* Add a ban or ban exclusion to the banlist. Bans either a user, an IP or an email address
+* Add a ban or ban exclusion to the banlist. Bans either a user, a user's PMs, an IP or an email address
 *
-* @param string $mode Type of ban. One of the following: user, ip, email
+* @param string $mode Type of ban. One of the following: user, ip, pmban, email
 * @param mixed $ban Banned entity. Either string or array with usernames, ips or email addresses
 * @param int $ban_len Ban length in minutes
 * @param string $ban_len_other Ban length as a date (YYYY-MM-DD)
@@ -932,6 +932,11 @@ function user_ban($mode, $ban, $ban_len, $ban_len_other, $ban_exclude, $ban_reas
 	$sql = 'DELETE FROM ' . BANLIST_TABLE . '
 		WHERE ban_end < ' . time() . '
 			AND ban_end <> 0';
+	$db->sql_query($sql);
+	
+	// CUSTOM: Delete stale PM bans
+	$sql = 'DELETE FROM ' . PM_BANLIST_TABLE . 'WHERE ban_end <' . 
+	time() . 'AND ban_end <> 0';
 	$db->sql_query($sql);
 
 	$ban_list = (!is_array($ban)) ? array_unique(explode("\n", $ban)) : $ban;
@@ -1183,6 +1188,73 @@ function user_ban($mode, $ban, $ban_len, $ban_len_other, $ban_exclude, $ban_reas
 			}
 		break;
 
+		case 'pmban':
+			$type = 'pmban_user';
+
+			// At the moment we do not support wildcard username banning
+
+			// Select the relevant user_ids.
+			$sql_usernames = array();
+
+			foreach ($ban_list as $username)
+			{
+				$username = trim($username);
+				if ($username != '')
+				{
+					$clean_name = utf8_clean_string($username);
+					if ($clean_name == $user->data['username_clean'])
+					{
+						trigger_error('CANNOT_PM_BAN_YOURSELF', E_USER_WARNING);
+					}
+					if (in_array($clean_name, $founder_names))
+					{
+						trigger_error('CANNOT_PM_BAN_FOUNDER', E_USER_WARNING);
+					}
+					$sql_usernames[] = $clean_name;
+				}
+			}
+
+			// Make sure we have been given someone to PM ban
+			if (!count($sql_usernames))
+			{
+				trigger_error('NO_USER_SPECIFIED', E_USER_WARNING);
+			}
+
+			$sql = 'SELECT user_id
+				FROM ' . USERS_TABLE . '
+				WHERE ' . $db->sql_in_set('username_clean', $sql_usernames);
+
+			// Do not allow banning yourself, the guest account, or founders.
+			$non_bannable = array($user->data['user_id'], ANONYMOUS);
+			if (count($founder))
+			{
+				$sql .= ' AND ' . $db->sql_in_set('user_id', array_merge(array_keys($founder), $non_bannable), true);
+			}
+			else
+			{
+				$sql .= ' AND ' . $db->sql_in_set('user_id', $non_bannable, true);
+			}
+
+			$result = $db->sql_query($sql);
+
+			if ($row = $db->sql_fetchrow($result))
+			{
+				do
+				{
+					$banlist_ary[] = (int) $row['user_id'];
+				}
+				while ($row = $db->sql_fetchrow($result));
+
+				$db->sql_freeresult($result);
+			}
+			else
+			{
+				$db->sql_freeresult($result);
+
+				trigger_error('NO_USERS', E_USER_WARNING);
+			}
+		break;
+
 		default:
 			trigger_error('NO_MODE', E_USER_WARNING);
 		break;
@@ -1218,6 +1290,11 @@ function user_ban($mode, $ban, $ban_len, $ban_len_other, $ban_exclude, $ban_reas
 				case 'email':
 					$banlist_ary_tmp[] = $row['ban_email'];
 				break;
+					
+				case 'pmban':
+					$pmban_ary_tmp[] = $row['pmban_user'];
+				break;
+					
 			}
 		}
 		while ($row = $db->sql_fetchrow($result));
@@ -1256,7 +1333,7 @@ function user_ban($mode, $ban, $ban_len, $ban_len_other, $ban_exclude, $ban_reas
 
 		$db->sql_multi_insert(BANLIST_TABLE, $sql_ary);
 
-		// If we are banning we want to logout anyone matching the ban
+		// If we are banning we want to logout anyone matching the ban, unless it's a PM ban.
 		if (!$ban_exclude)
 		{
 			switch ($mode)
@@ -1296,10 +1373,22 @@ function user_ban($mode, $ban, $ban_len, $ban_len_other, $ban_exclude, $ban_reas
 					}
 					$db->sql_freeresult($result);
 				break;
+					
+				case 'pmban':
+					$pmban = true;
+					// Do nothing here, do not select users.
+				break;
+					
 			}
 
 			if (isset($sql_where) && $sql_where)
 			{
+				if (isset($pmban) && $pmban)
+				{
+					// Do not allow PM bans to log out users
+					break;
+				}
+				
 				$sql = 'DELETE FROM ' . SESSIONS_TABLE . "
 					$sql_where";
 				$db->sql_query($sql);
@@ -1389,6 +1478,15 @@ function user_unban($mode, $ban)
 					FROM ' . BANLIST_TABLE . '
 					WHERE ' . $db->sql_in_set('ban_id', $unban_sql);
 			break;
+				
+			case 'pmban':
+				// Just copy this SQL over for now...
+				$sql  = 'SELECT u.username AS unban_info, u.user_id FROM ' . PM_BANS_TABLE . '
+					u, ' . BANLIST_TABLE ' b WHERE ' . $db->sql_in_set('b.ban_id', $unban_sql) . ' AND 
+					u.user_id = b.ban_userid';
+			break;
+				
+				
 		}
 		$result = $db->sql_query($sql);
 
