@@ -276,6 +276,7 @@ $lang = array_merge($lang, array(
 	'USER_CANNOT_DELETE'		=> 'You cannot delete posts in this forum.',
 	'USER_CANNOT_EDIT'			=> 'You cannot edit posts in this forum.',
 	'USER_CANNOT_REPLY'			=> 'You cannot reply in this forum.',
+	'USER_CANNOT_REPLY_T_BAN'	=> 'You have been banned from replying to this thread.',
 	'USER_CANNOT_FORUM_POST'	=> 'You are not able to do posting operations on this forum due to the forum type not supporting it.',
 
 	'VIEW_MESSAGE'				=> '%sView your submitted message%s',
