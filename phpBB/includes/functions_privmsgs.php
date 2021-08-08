@@ -55,6 +55,12 @@ define('CHECK_MESSAGE', 3);
 define('CHECK_STATUS', 4);
 define('CHECK_TO', 5);
 
+// CUSTOM: PM banned constant
+define ('PM_BANNED', 99); // Overrides all other functions
+// END CUSTOM
+
+$auth = new \phpbb\auth\auth();
+
 /**
 * Global private message rules
 * These rules define what to do if a rule is hit
@@ -114,6 +120,31 @@ $global_rule_conditions = array(
 	RULE_IS_GROUP		=> 'group'
 );
 
+/* 
+* CUSTOM 
+* PM ban check - if a user is PM banned we cannot let them continue
+* Also clamp the check at 1 because there's no need to check for inactive PM bans,
+* we just need to see that the user has been PM banned 
+*/
+$sql = 'SELECT FROM' . PM_BANS_TABLE . 'WHERE target_user_id' 
+= '$user_id' 'LIMIT 1 ORDER BY DESC';
+$result = $db->sql_query($sql);
+
+while ($row = $db->sql_fetchrow($result))
+{
+	$bancount = count($row);
+	// Moderators and administrators may still access messages even if they are PM banned
+	// (as locking them out defeats the whole purpose)
+	if ($bancount >= 1 && !$auth->acl_get('m_', $user_id) || !$auth->acl_get('a_', $user_id))
+	{
+		// User is PM banned. Stop now.
+		// send_status_line(403, 'Forbidden');
+		trigger_error('NO_ACCESS_PM_BANNED');
+	}
+}
+$db->sql_freeresult($result); // Query cleanup
+// END CUSTOM
+
 /**
 * Get all folder
 */
@@ -138,7 +169,6 @@ function get_folder($user_id, $folder_id = false)
 		$num_messages[(int) $row['folder_id']] = $row['num_messages'];
 		$num_unread[(int) $row['folder_id']] = $row['num_unread'];
 	}
-	$db->sql_freeresult($result);
 
 	// Make sure the default boxes are defined
 	$available_folder = array(PRIVMSGS_INBOX, PRIVMSGS_OUTBOX, PRIVMSGS_SENTBOX);
