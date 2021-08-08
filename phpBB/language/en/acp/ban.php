@@ -43,6 +43,7 @@ $lang = array_merge($lang, array(
 	'6_HOURS'		=> '6 hours',
 
 	'ACP_BAN_EXPLAIN'	=> 'Here you can control the banning of users by name, IP or email address. These methods prevent a user reaching any part of the board. You can give a short (maximum 3000 characters) reason for the ban if you wish. This will be displayed in the admin log. The duration of a ban can also be specified. If you want the ban to end on a specific date rather than after a set time period select <span style="text-decoration: underline;">Until -&gt;</span> for the ban length and enter a date in <kbd>YYYY-MM-DD</kbd> format.',
+	'ACP_PM_BAN_EXPLAIN' => 'Here you can ban or lift Private Message bans. When PM banned, a user will not be able to send PMs to anyone.' // CUSTOM
 
 	'BAN_EXCLUDE'			=> 'Exclude from banning',
 	'BAN_LENGTH'			=> 'Length of ban',
@@ -72,7 +73,16 @@ $lang = array_merge($lang, array(
 	'OPTIONS_BANNED'			=> 'Banned',
 	'OPTIONS_EXCLUDED'			=> 'Excluded',
 
-	'PERMANENT'		=> 'Permanent',
+	'PERMANENT'					=> 'Permanent',
+	
+	// CUSTOM: PM banning
+	'PM_BAN'	=> 'Ban users from accessing their Private Messages',
+	'PM_BAN_EXCLUDE_EXPLAIN' => 'Enable this to exclude the entered users from being PM banned.',
+	'PM_BAN_EXPLAIN' => 'You may ban multiple users - enter one user per line.',
+	'NO_PM_BANS' => 'No users PM banned',
+	'PM_BAN_LIFT' => 'Lift PM ban by username',
+	'PM_BAN_LIFT_EXPLAIN' => 'You may lift multiple PM bans - enter one user per line.',
+	// END CUSTOM
 
 	'UNTIL'						=> 'Until',
 	'USER_BAN'					=> 'Ban one or more users by username',
@@ -81,4 +91,5 @@ $lang = array_merge($lang, array(
 	'USER_NO_BANNED'			=> 'No banned usernames',
 	'USER_UNBAN'				=> 'Un-ban or un-exclude users by username',
 	'USER_UNBAN_EXPLAIN'		=> 'You can unban (or un-exclude) multiple users in one go using the appropriate combination of mouse and keyboard for your computer and browser. Excluded users are emphasised.',
+
 ));
