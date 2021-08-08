@@ -183,6 +183,9 @@ $lang = array_merge($lang, array(
 	'MCP_NOTES_USER'				=> 'User details',
 
 	'MCP_POST_REPORTS'				=> 'Reports issued on this post',
+	
+	'MCP_PIN_HEADER'				=> 'Pin Header Post',
+	'MCP_PIN_HEADER_CONFIRM'		=> 'Are you sure you want to pin this post as the topic header?',
 
 	'MCP_PM_REPORTS'				=> 'Reported PMs',
 	'MCP_PM_REPORT_DETAILS'			=> 'PM Report details',
@@ -197,6 +200,13 @@ $lang = array_merge($lang, array(
 	'MCP_REPORTS_CLOSED_EXPLAIN'	=> 'This is a list of all reports about posts which have previously been resolved.',
 	'MCP_REPORTS_OPEN'				=> 'Open reports',
 	'MCP_REPORTS_OPEN_EXPLAIN'		=> 'This is a list of all reported posts which are still to be handled.',
+	
+	// CUSTOM: Threadbans
+	'MCP_THREADBAN'							=> 'Threadban user',
+	'MCP_THREADBAN_CONFIRM'					=> 'Are you sure you want to threadban %s?',
+	'MCP_THREADBAN_LIFT'					=> 'Lift threadban',
+	'MCP_THREADBAN_LIFT_CONFIRM' 			=> 'Are you sure you want to lift %s\'s threadban?',
+	// END CUSTOM
 
 	'MCP_QUEUE'								=> 'Moderation queue',
 	'MCP_QUEUE_APPROVE_DETAILS'				=> 'Approve details',
@@ -260,6 +270,13 @@ $lang = array_merge($lang, array(
 	'OTHER_USERS'			=> 'Other users posting from this IP',
 
 	'QUICKMOD_ACTION_NOT_ALLOWED' => "%s not allowed as quickmod",
+	
+	// CUSTOM: PM Bans
+	'PM_BAN_NOTIFICATION'		=> 'PM banned by %s',
+	'PM_BAN_SUBJECT'			=> 'PM banned',
+	'PM_BAN_BODY'				=> 'You have been banned from using Private Messages. While banned from PMs, you may read your PMs but not receive or send them. 
+	<br> The reason for your PM ban is below: <br> [quote]%s[/quote]',
+	// END CUSTOM
 
 	'PM_REPORT_CLOSED_SUCCESS'	=> 'The selected PM report has been closed successfully.',
 	'PM_REPORT_DELETED_SUCCESS'	=> 'The selected PM report has been deleted successfully.',
@@ -377,7 +394,8 @@ $lang = array_merge($lang, array(
 	'TOPIC_NOT_EXIST'			=> 'The topic you selected does not exist.',
 	'TOPIC_RESTORED_SUCCESS'	=> 'The selected topic has been restored successfully.',
 	'TOPIC_RESYNC_SUCCESS'		=> 'The selected topic has been resynchronised.',
-	'TOPIC_SPLIT_SUCCESS'		=> 'The selected topic has been split successfully.',
+	'TOPIC_SPLIT_SUCCESS'		=> 'The selected topic has been split successfully',
+	'TOPIC_THREADBAN_SUCCESS'	=> 'The user has been threadbanned successfully'
 	'TOPIC_TIME'				=> 'Topic time',
 	'TOPIC_TYPE_CHANGED'		=> 'Topic type changed successfully.',
 	'TOPIC_UNLOCKED_SUCCESS'	=> 'The selected topic has been unlocked.',
@@ -412,8 +430,13 @@ $lang = array_merge($lang, array(
 	'WARNED_USERS_EXPLAIN'	=> 'This is a list of users with unexpired warnings issued to them.',
 	'WARNING_PM_BODY'		=> 'The following is a warning which has been issued to you by an administrator or moderator of this site.[quote]%s[/quote]',
 	'WARNING_PM_SUBJECT'	=> 'Board warning issued',
-	'WARNING_POST_DEFAULT'	=> 'This is a warning regarding the following post made by you: %s .',
-	'NO_WARNINGS'	=> 'No warnings exist.',
+	'WARNING_POST_DEFAULT'	=> 'You were warned for: %s.',
+	// CUSTOM: Threadbans
+	'THREADBAN_PM_SUBJECT'	=> 'Threadban issued',
+	'THREADBAN_PM_DEFAULT'	=> 'You were threadbanned for: %s',
+	'THREADBAN_PM_BODY'		=> 'You have been threadbanned by %s from %s. The reason for your ban was [quote]%s[/quote]',
+	// END CUSTOM
+	'NO_WARNINGS'			=> 'No warnings exist.',
 
 	'YOU_SELECTED_TOPIC'	=> 'You selected topic number %d: %s.',
 
